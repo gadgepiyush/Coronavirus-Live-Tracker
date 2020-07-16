@@ -1,4 +1,4 @@
 class APIKeys{
 
-  static String ncovSandboxKey = "d38dcbdf0023cbf609a0bbf7d5a7eb3eb4fdb0118376aac7756a878fb6a84219";
+  static String ncovSandboxKey = "b684e992146041e2f7fe7be53df19cfd32dfc774eb76b09f4d4dd3327eb438d0";
 }

@@ -53,14 +53,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _accessToken = "";
+  String _accessToken = "";
+  int _cases;
 
-  void _incrementCounter() async{
+
+  void _updateAccessToken() async{
     final apiService = APIService(API.sandbox());
     final accessToken = await apiService.getAccessToken();
+    final cases = await apiService.getEndpointData(accessToken: accessToken, endpoint: Endpoint.cases);
     setState(() {
       _accessToken = accessToken;
+      _cases = cases;
     });
+
   }
 
   @override
@@ -100,15 +105,16 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'You have pushed the button this many times:',
             ),
+            if(_cases != null)
             Text(
-              '$_accessToken',
+              '$_cases',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _updateAccessToken,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
