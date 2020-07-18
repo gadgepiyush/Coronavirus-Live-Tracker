@@ -1,5 +1,5 @@
-import 'package:coronatracker/app/services/api.dart';
-import 'package:coronatracker/app/services/endpoint_data.dart';
+import 'package:coronatracker/services/api.dart';
+import 'package:coronatracker/services/endpoint_data.dart';
 import 'package:flutter/foundation.dart';
 
 class EndpointsData{

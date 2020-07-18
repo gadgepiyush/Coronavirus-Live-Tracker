@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:coronatracker/app/services/api.dart';
+import 'package:coronatracker/services/api.dart';
 import 'package:coronatracker/repositories/data_repositories.dart';
 import 'package:coronatracker/repositories/endpointsdata.dart';
 import 'package:coronatracker/ui/endpointcard.dart';
@@ -46,13 +45,15 @@ class _DashBoardState extends State<DashBoard> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    final dataRepository = Provider.of<DataRepository>(context, listen: false);
+    _endpointsData = dataRepository.getAllEndpointsCachedData();
     _updateData();
   }
 
   @override
   Widget build(BuildContext context) {
     final formatter = LastUpdatedDateFormatter(
-        lastUpdated: _endpointsData != null ? _endpointsData.values[Endpoint.cases].date ?? '': null,
+        lastUpdated: _endpointsData != null ? _endpointsData.values[Endpoint.cases]?.date : null,
     );
     return Scaffold(
       appBar: AppBar(
@@ -70,7 +71,7 @@ class _DashBoardState extends State<DashBoard> {
             for(var endpoint in Endpoint.values)
             EndPointCard(
               endpoint: endpoint,
-              value: _endpointsData != null ? _endpointsData.values[endpoint].value : null,
+              value: _endpointsData != null ? _endpointsData.values[endpoint]?.value : null,
             )
           ],
         ),

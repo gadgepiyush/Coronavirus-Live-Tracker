@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:coronatracker/app/services/api_keys.dart';
+import 'package:coronatracker/services/api_keys.dart';
 
 enum Endpoint{
   cases,

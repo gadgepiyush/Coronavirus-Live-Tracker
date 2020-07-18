@@ -1,4 +1,4 @@
-import 'package:coronatracker/app/services/api.dart';
+import 'package:coronatracker/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
